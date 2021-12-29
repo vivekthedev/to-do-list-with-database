@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List App</title>
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <link rel="shortcut icon" type="image/jpg" href="{% static 'checked.png' %}"/>
+
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">To-Do List Tasks
+        <h4 style="text-align: center;">Hey, {{request.user}}</h4></h1><br>
+        {% if request.user.is_authenticated %}
+            <form action="{% url 'logout' %}" method="post" style="margin:auto">
+				{% csrf_token %}
+
+                <button type="submit" class="btn logout" style="
+                            padding: 0.5em;
+                            margin-bottom: 3px;">Log Out</button>
+            </form>
+        {% endif %}
+        <div class="form">
+            <form action="{% url 'add' %}" method="post">
+				{% csrf_token %}
+                <input type="text" placeholder="type here" name='title'>
+				<button type="submit" class="btn">Add Task</button>
+            </form>
+        </div>
+        {% for task in tasks %}
+        {% if task.isDone %}
+        <div class="task" id="donetask">
+            <strike><i>{{task.title}}</i></strike>
+            <a href="{% url 'notdone' task.id %}">
+                <div class="btn done" id="notdone" title='Mark as Not Done'>U</div>
+            </a>
+            <a href="{% url 'remove' task.id %}">
+                <div class="btn remove" title='Remove from List'>R</div>
+            </a>
+        </div>
+        {% else %}
+        <div class="task">
+            {{task.title}}
+            <a href="{% url 'done' task.id %}">
+            <div class="btn done" title='Mark as Done'>D</div>
+            </a>
+            <a href="{% url 'remove' task.id %}">
+                <div class="btn remove" title='Remove from List'>R</div>
+            </a>
+        </div>
+        {% endif %}
+        {% empty %}
+        <div class="task">
+            <h1 style="padding: 0.8em;">
+                There are no tasks right now. 
+            </h1>
+        </div>
+        {% endfor %}
+        
+    </div>
+</body>
+</html>

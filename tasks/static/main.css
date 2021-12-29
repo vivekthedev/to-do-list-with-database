@@ -1,0 +1,116 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Futura";
+  color: #fff;
+}
+body {
+  height: 100vh;
+  background-image: linear-gradient(
+    to right top,
+    #d16ba5,
+    #c777b9,
+    #ba83ca,
+    #aa8fd8,
+    #9a9ae1,
+    #8aa7ec,
+    #79b3f4,
+    #69bff8,
+    #52cffe,
+    #41dfff,
+    #46eefa,
+    #5ffbf1
+  );
+}
+
+.container {
+  width: 35vw;
+  height: auto;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  background: #357266;
+  border-radius: 6px;
+}
+.title {
+  text-align: center;
+  color: white;
+  padding: 0.5em;
+}
+.task {
+  align-items: center;
+  display: grid;
+  background-color: #3e363f;
+  grid-template-columns: 80% 10% 10%;
+  padding: 0.5em;
+  border-bottom: 0.5px white dashed;
+}
+#donetask {
+  background-color: #222022;
+}
+.btn {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.done {
+  background-color: #018e42;
+}
+#notdone {
+  background-color: #013519;
+}
+.remove {
+  background-color: red;
+}
+form {
+  margin-bottom: 3px;
+}
+input[type="text"],
+button {
+  padding: 0.4em;
+  color: #3e363f;
+  text-decoration: none;
+  outline: none;
+}
+button {
+  background-color: #018e42;
+  text-transform: uppercase;
+  color: white;
+  border: none;
+}
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  border-top: 1px solid black;
+  border-bottom: none;
+  padding: 15px;
+  color: #000;
+}
+button:active {
+  background: #024722;
+}
+a {
+  text-decoration: none;
+}
+
+.task:last-child {
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+.login {
+  height: 3rem;
+}
+#warn {
+  background-color: rgba(218, 16, 16, 0.89);
+}
+
+button .logout {
+  color: aqua;
+}
