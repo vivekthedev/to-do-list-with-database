@@ -114,3 +114,12 @@ a {
 button .logout {
   color: aqua;
 }
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: 80vw;
+  }
+  .title {
+    font-size: 1.3rem;
+  }
+}
